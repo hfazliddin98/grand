@@ -5,7 +5,7 @@ from user.models import User
 
 @admin.register(User)
 class UsersAdmin(admin.ModelAdmin):
-    list_display = ['username', 'password']
+    list_display = ['username', 'parol', 'password']
     fields = ['username', 'last_name', 'first_name', 'role']
 
     def get_queryset(self, request):
