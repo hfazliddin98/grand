@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
+    # tashqi app 
+    "django_bootstrap5",
+
     # men qoshgan app
     'user',
 ]

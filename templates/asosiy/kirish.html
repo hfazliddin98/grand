@@ -1,29 +1,33 @@
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <title>Kirish</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <h1>Kirish</h1>
-        </div>
-        <div class="row">
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="w-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded p-4" style="max-width: 400px;">
+            <p class="h1 text-center py-4">Kirish</p>
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-            
-                <!-- <input type="text" name="username">
-                <input type="text" name="password"> -->
-
-                <button type="submit">kirish</button>
+                {% bootstrap_form form %}
+                <div class="d-flex justify-content-center py-2">
+                    <button class="btn btn-outline-success" type="submit">Kirish</button>
+                </div>
             </form>
         </div>
     </div>
+    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

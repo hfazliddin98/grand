@@ -3,15 +3,15 @@ from user.choices import UserRoleChoice
 
 
 class KirishForm(forms.Form):
-    username = forms.CharField(max_length=20)
-    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(max_length=20, label="Username")
+    password = forms.CharField(widget=forms.PasswordInput(), label="Parol")
 
 class RoyhatForm(forms.Form):
-    username = forms.CharField(max_length=200)
-    last_name = forms.CharField(max_length=200)
-    first_name = forms.CharField(max_length=200)
+    username = forms.CharField(max_length=20, label="Username")
+    last_name = forms.CharField(max_length=200, label="Familya")
+    first_name = forms.CharField(max_length=200, label="Ism")
     role = forms.ChoiceField(choices=UserRoleChoice.choices)
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), label="Parolni kiriting")
     password2 = forms.CharField(widget=forms.PasswordInput(), label="Parolni tasdiqlang")
 
     def clean(self):
