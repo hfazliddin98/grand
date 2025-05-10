@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/itpark_logo.png' %}">
+
+    <title>Bosh sahifa</title>
+</head>
+
+<body class="bg-body-tertiary">
+
+
+
+
+    {% if user.is_authenticated %}
+ 
+        <div class="sticky-top">
+            <nav class="navbar px-2 py-3 bg-body-tertiary border-bottom border-3">
+                <div class="container-fluid btn-group-sm pe-4">
+
+                    <a class="navbar-brand h3 m-0" href="{% url 'home' %}">
+                        <img src="{% static 'images/itpark_logo.png' %}" alt="Logo" width="30" height="26"
+                            class="d-inline-block align-text-top">
+                        KDU
+                    </a>
+
+                    <div class="d-flex flex-row-reverse">
+                        <div class="p-2">
+                            <a class="h6 btn btn-sm btn-outline-danger m-0" href="{% url 'chiqish' %}">Chiqish</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </nav>
+        </div>
+
+    {% endif %}
+
+    <div class="container-fuild btn-group-sm">
+        <div class="row min-vh-100 mx-0">
+
+            {% block content %}
+            {% endblock content %}
+
+        </div>
+    </div>
+
+    <div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="mySidebar">
+            <a href="#">Bosh sahifa</a>
+            <a href="#">Xizmatlar</a>
+            <a href="#">Biz haqimizda</a>
+            <a href="#">Aloqa</a>
+        </div>
+
+        <!-- Ochish/Yopish tugmasi -->
+        <button class="btn btn-primary toggle-btn" id="toggleSidebar">☰ salom</button>
+
+
+    </div>
+
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+
+</html>

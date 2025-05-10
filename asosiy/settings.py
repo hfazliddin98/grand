@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
 
     # tashqi app 
+    'fontawesomefree',
     "django_bootstrap5",
 
     # men qoshgan app

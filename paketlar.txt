@@ -16,6 +16,7 @@ drf-yasg
 requests
 apscheduler
 django-jazzmin
+fontawesomefree
 
 
 gunicorn 
