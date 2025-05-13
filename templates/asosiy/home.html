@@ -5,40 +5,38 @@
 {% block title %}Bosh sahifa{% endblock %}
 
 {% block content %}
+
     <div class="container-fluid">
-        
-        
-        <div class="row">
-            <h1>Hush kelibsiz</h1>
-        </div>
-        
 
-            {% if user.role == 'superadmin' %}
+
+        {% if user.role == 'superadmin' %}
 
             <div class="row">
-                <p>salom superadmin {{user.last_name}} </p>
-                <a href="{% url 'chiqish' %}">chiqish</a>
-    
+
+                {% include "asosiy/superadmin.html" %}
+
             </div>
 
-            {% elif user.role == 'admin' %}
+        {% elif user.role == 'admin' %}
 
             <div class="row">
-                <p>salom admin {{user.last_name}} </p>
-                <a href="{% url 'chiqish' %}">chiqish</a>
-    
-            </div>
-            {% else %}
-            <div class="row">
-                <p>salom talaba {{user.last_name}}</p>
-                <a href="{% url 'chiqish' %}">chiqish</a>
-    
+
+                {% include "asosiy/admin.html" %}
+
             </div>
 
-            {% endif %}
-           
-        
+
+        {% else %}
+
+            <div class="row">
+
+                {% include "asosiy/admin.html" %}
+
+            </div>
+
+        {% endif %}
+
 
     </div>
-    
+
 {% endblock %}
