@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     # men qoshgan app
     'user',
+    'grand_ariza',
+    'grand_api',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from user.models import User
+from user.choices import UserRoleChoice
 from user.forms import KirishForm, RoyhatForm
 
 
@@ -62,3 +63,11 @@ def chiqish(request):
     logout(request)
 
     return redirect('home')
+
+
+def adminlar(request):
+    adminlar = User.objects.filter(role=UserRoleChoice.ADMIN)
+    contex = {
+        'adminlar':adminlar,
+    }
+    return render(request, 'admin/adminlar.html', contex)

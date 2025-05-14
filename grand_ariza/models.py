@@ -4,5 +4,11 @@ from user.models import User
 
 
 class Ariza(models.Model):
-    talaba = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    talaba = models.OneToOneField(User, on_delete=models.CASCADE  )
     
+
+
+class Natija(models.Model):
+    talaba = models.OneToOneField(User, on_delete=models.CASCADE  )
+    
+
