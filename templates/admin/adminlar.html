@@ -11,9 +11,21 @@
 
         {% if user.role == 'superadmin' %}
 
-            <div>
-                adminlar
+            <div class="d-flex justify-content-center py-4">
+                <h1>Adminlar</h1>
             </div>
+
+            <div>
+                <ul class="list-group mx-4">
+                    {% for a in adminlar %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ a.last_name }} {{ a.first_name }}
+                            <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">Taxrirlash</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
 
         {% endif %}
 

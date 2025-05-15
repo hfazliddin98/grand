@@ -12,6 +12,7 @@ class User(AbstractUser):
     yonalish = models.CharField(max_length=255, blank=True)
     kurs  = models.CharField(max_length=255, blank=True)
     guruh = models.CharField(max_length=255, blank=True)
+    gpa = models.CharField(max_length=255, blank=True)
     parol = models.CharField(max_length=255, blank=True)
 
     class Meta:
