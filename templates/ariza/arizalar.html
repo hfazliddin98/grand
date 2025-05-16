@@ -11,9 +11,21 @@
 
         {% if user.role == 'superadmin' %}
 
-            <div>
-                arizalar
+            <div class="d-flex justify-content-center py-4">
+                <h1>Arizalar</h1>
             </div>
+
+            <div>
+                <ul class="list-group mx-4">
+                    {% for a in ariza_data %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ a }}
+                            <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">Baxolash</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
 
         {% endif %}
 

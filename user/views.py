@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.viewsets import ModelViewSet
 from user.models import User
 from user.choices import UserRoleChoice
 from user.forms import KirishForm, RoyhatForm
+from user.serializers import UserGetSerializer, UserPostSerializer
 
-
+@csrf_exempt
 def home(request):
 
     return render(request, 'asosiy/home.html')
 
+@csrf_exempt
 def kirish(request):
     if request.method == 'POST':
         form = KirishForm(request.POST)
@@ -29,6 +34,7 @@ def kirish(request):
     }
     return render(request, 'asosiy/kirish.html', contex)
 
+@csrf_exempt
 def royhat(request):
     if request.method == 'POST':
         form = RoyhatForm(request.POST)
@@ -59,15 +65,31 @@ def royhat(request):
 
     return render(request, 'asosiy/royhat.html', contex)
 
+
+@csrf_exempt
 def chiqish(request):
     logout(request)
 
     return redirect('home')
 
 
+
+@csrf_exempt
 def adminlar(request):
     adminlar = User.objects.filter(role=UserRoleChoice.ADMIN)
     contex = {
         'adminlar':adminlar,
     }
     return render(request, 'admin/adminlar.html', contex)
+
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.filter(is_superuser=False)
+    http_method_names = ['get', 'post', 'patch']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['username', 'role']
+    
+    def get_serializer_class(self):
+        if self.action in ['list', 'retrieve']:  # GET uchun
+            return UserGetSerializer
+        return UserPostSerializer  # POST, PUT, PATCH uchun

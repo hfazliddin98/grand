@@ -35,7 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    # tashqi app 
+    # app
+    'rest_framework',
+    'drf_yasg',
+    'corsheaders',
+    'dbbackup',
     'fontawesomefree',
     "django_bootstrap5",
 

@@ -13,10 +13,11 @@ class Ariza(models.Model):
     ariza_role = models.CharField(max_length=30, choices=ArizaRoleChoice.choices, default=ArizaRoleChoice.OQUV)
     tasdiqlash = models.BooleanField(default=False)
     rad_etish = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     
 
 
 class Natija(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE  )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     
 
