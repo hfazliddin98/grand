@@ -1,13 +1,14 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from user.choices import UserRoleChoice
+from user.choices import UserRoleChoice, BolimChoice
 
 
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     role = models.CharField(max_length=30, choices=UserRoleChoice.choices, default=UserRoleChoice.TALABA)
+    bolim = models.CharField(max_length=30, choices=BolimChoice.choices, default=BolimChoice.OQUV)
     fakultet = models.CharField(max_length=255, blank=True)
     yonalish = models.CharField(max_length=255, blank=True)
     kurs  = models.CharField(max_length=255, blank=True)

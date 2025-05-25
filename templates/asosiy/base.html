@@ -17,7 +17,7 @@
 
 <body class="bg-body-tertiary">
 
-    <div class="container-fuild">
+    <div class="container-fuild d-none d-md-block">
 
 
         {% if user.is_authenticated %}
@@ -46,8 +46,16 @@
 
         <div class="row min-vh-100 mx-0">
 
-            {% block content %}
-            {% endblock content %}
+            <div class="col-3">
+                saidbar
+
+            </div>
+             
+            <div class="col-9">
+                {% block content %}
+                {% endblock content %}
+            </div>
+
 
         </div>
 
@@ -62,6 +70,12 @@
         {% endif %}
 
 
+    </div>
+
+    <div class=" d-block d-md-none">
+        <h1 class="text-center text-danger mt-5">
+            Tizimga faqat kompyuterdan kiring !!!
+        </h1>
     </div>
 
     <script src="{% static 'js/main.js' %}"></script>
