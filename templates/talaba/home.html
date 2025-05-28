@@ -1,0 +1,26 @@
+{% extends "asosiy/base.html" %}
+{% load static %}
+
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+
+        {% if user.role == 'talaba' %}
+
+            <div class="row">
+                <h3>Talaba</h3>
+
+                {% include "asosiy/superadmin.html" %}
+
+            </div>
+
+        {% endif %}
+
+
+    </div>
+
+{% endblock %}

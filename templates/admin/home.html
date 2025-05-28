@@ -1,0 +1,27 @@
+{% extends "asosiy/base.html" %}
+{% load static %}
+
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+
+        {% if user.role == 'admin' %}
+
+            <div class="row">
+                <h3>admin</h3>
+
+                {% include "asosiy/admin.html" %}
+
+            </div>
+
+        
+        {% endif %}
+
+
+    </div>
+
+{% endblock %}

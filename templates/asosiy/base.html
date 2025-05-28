@@ -18,17 +18,15 @@
 
 <body class="">
 
-
-
     <div class="container-fuild">
 
 
         {% if user.is_authenticated %}
 
-        <div class="row sticky-top bg-body-tertiary border-bottom border-3 mx-0">
+        <div class="row sticky-top bg-body-tertiary border-bottom border-3 px-md-3 mx-0">
             <nav class="navbar navbar-expand-md bg-body-tertiary">
                 <div class="container-fluid sticky-top">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{% url 'home' %}">
                         <img class="mb-2" src="https://kspi.uz/static/media/logo_kspi.e2960ced8c37eb27e4e6.png"
                             width="30" height="24">
                         <span class="d-none d-sm-inline fw-semibold">
@@ -67,7 +65,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end"> <!-- o‘ng tomondan tushadi -->
                                         <li class="nav-item d-flex justify-content-center py-2">
-                                           <a href="{% url 'chiqish' %}" class="text-success text-decoration-none">
+                                           <a href="{% url 'home' %}" class="text-success text-decoration-none">
                                                <i class="bi bi-person-check"></i>
                                                 Malumotlarim
                                             </a>

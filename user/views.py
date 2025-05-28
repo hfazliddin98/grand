@@ -10,8 +10,16 @@ from user.serializers import UserGetSerializer, UserPostSerializer
 
 @csrf_exempt
 def home(request):
+    if request.user.is_authenticated:
+        if request.user.role == UserRoleChoice.SUPERADMIN:
+            return render(request, 'superadmin/home.html')
+        elif request.user.role == UserRoleChoice.ADMIN:
+            return render(request, 'admin/home.html')
+        elif request.user.role == UserRoleChoice.TALABA:
+            return render(request, 'talaba/home.html')
+    else:
 
-    return render(request, 'asosiy/home.html')
+        return redirect('kirish')
 
 @csrf_exempt
 def kirish(request):

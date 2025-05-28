@@ -9,3 +9,4 @@ class BolimChoice(models.TextChoices):
     OQUV = ("oquv", "oquv")
     MANAVIYAT = ("manaviyat", "manaviyat")
     ILMIY = ("ilmiy", "ilmiy")
+    TALABA = ("talaba", "talaba")
