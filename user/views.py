@@ -92,6 +92,28 @@ def adminlar(request):
     }
     return render(request, 'superadmin/adminlar.html', contex)
 
+@csrf_exempt
+def malumotlarim(request):
+    last_name = request.user.last_name
+    first_name = request.user.first_name
+    sharif = request.user.sharif
+    fakultet = request.user.fakultet
+    yonalish = request.user.yonalish
+    kurs = request.user.kurs
+    guruh = request.user.guruh
+    gpa = request.user.gpa
+    contex = {
+        'last_name':last_name,
+        'first_name':first_name,
+        'sharif':sharif,
+        'fakultet':fakultet,
+        'yonalish':yonalish,
+        'kurs':kurs,
+        'guruh':guruh,
+        'gpa':gpa,
+    }
+    return render(request, 'talaba/malumotlarim.html', contex)
+
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.filter(is_superuser=False)

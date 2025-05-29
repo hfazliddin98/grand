@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 from user.views import UserViewSet
-from user.views import home, kirish, chiqish, admin_qoshish, adminlar
+from user.views import home, kirish, chiqish, admin_qoshish, adminlar, malumotlarim
 
 
 
@@ -17,6 +17,7 @@ urlpatterns = [
     path('chiqish/', chiqish, name='chiqish'),
     
     path('adminlar/', adminlar, name='adminlar'),
+    path('malumotlarim/', malumotlarim, name='malumotlarim'),
 ]
 
 urlpatterns += router.urls

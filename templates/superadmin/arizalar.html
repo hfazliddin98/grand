@@ -2,34 +2,79 @@
 {% load static %}
 
 
-{% block title %}Bosh sahifa{% endblock %}
+{% block title %}Arizalar{% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid">
+<div class="container-fluid mt-5">
 
 
-        {% if user.role == 'superadmin' %}
+    {% if user.role == 'superadmin' %}
 
-            <div class="d-flex justify-content-center py-4">
-                <h1>Adminlar</h1>
-            </div>
 
-            <div>
-                <ul class="list-group mx-4">
-                    {% for a in adminlar %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ a.last_name }} {{ a.first_name }}
-                            <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">Taxrirlash</a>
+    <div class="mx-4 border border-1 rounded-1">
+
+        <div class="d-flex justify-content-center align-items-center p-2 border-bottom border-3">
+            <p class="h4">Arizalar</p>
+        </div>
+        <ul class="list-group pt-2">
+            {% for a in ariza_data %}
+
+            <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
+                {{ a.user.last_name }} {{ a.user.first_name }} 
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
+                {{ a.user.last_name }} {{ a.user.first_name }}
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
+                {{ a.user.last_name }} {{ a.user.first_name }}
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
+            </li>
+            
+
+            {% endfor %}
+            <div class="d-flex justify-content-center align-items-center py-3">
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
                         </li>
-                    {% endfor %}
-                </ul>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
             </div>
 
-
-        {% endif %}
-
-
+        </ul>
     </div>
+
+
+
+
+    {% endif %}
+
+
+</div>
 
 {% endblock %}

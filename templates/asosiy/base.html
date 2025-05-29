@@ -51,28 +51,28 @@
                                     <a class="nav-link active" aria-current="page" href="{% url 'adminlar'%}">Adminlar</a>
                                 </li>
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Arizalar</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'arizalar'%}">Arizalar</a>
                                 </li>
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Natijalar</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'natijalar'%}">Natijalar</a>
                                 </li>
 
                             {% elif user.role == 'admin' %}
 
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Arizalar</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'arizalar'%}">Arizalar</a>
                                 </li>
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Natijalar</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'natijalar'%}">Natijalar</a>
                                 </li>
 
                             {% else %}
 
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Arizalarim</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'arizalar'%}">Arizam</a>
                                 </li>
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Malumotlarim</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'malumotlarim'%}">Malumotim</a>
                                 </li>
 
                             {% endif %}

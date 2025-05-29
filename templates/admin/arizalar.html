@@ -2,43 +2,47 @@
 {% load static %}
 
 
-{% block title %}Natijalar{% endblock %}
+{% block title %}Arizalar{% endblock %}
 
 {% block content %}
 
 <div class="container-fluid mt-5">
 
 
-    {% if user.role == 'superadmin' %}
+    {% if user.role == 'admin' %}
 
 
     <div class="mx-4 border border-1 rounded-1">
 
         <div class="d-flex justify-content-center align-items-center p-2 border-bottom border-3">
-            <p class="h4">Natijalar</p>
+            <p class="h4">Arizalar</p>
         </div>
         <ul class="list-group pt-2">
-            {% for n in natija_data %}
+            {% for a in ariza_data %}
 
             <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
-                {{ n.user.last_name }} {{ n.user.first_name }}
-                <p>
-                    Jami 98
-                </p>
+                {{ a.user.last_name }} {{ a.user.first_name }} 
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
-                {{ n.user.last_name }} {{ n.user.first_name }}
-                <p>
-                    Jami 92
-                </p>
+                {{ a.user.last_name }} {{ a.user.first_name }}
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center border-bottom border-0">
-                {{ n.user.last_name }} {{ n.user.first_name }}
-                <p>
-                    Jami 85
-                </p>
+                {{ a.user.last_name }} {{ a.user.first_name }}
+                <a href="" class="badge text-bg-success rounded-2 p-2 ms-3 text-decoration-none">
+                    <i class="bi bi-person-gear fa-lg"></i>
+                    Baxolash
+                </a>
             </li>
-           
+            
+
             {% endfor %}
             <div class="d-flex justify-content-center align-items-center py-3">
 

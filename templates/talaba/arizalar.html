@@ -1,0 +1,79 @@
+{% extends "asosiy/base.html" %}
+{% load static %}
+
+
+{% block title %}Arizalar{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-5">
+
+
+    {% if user.role == 'talaba' %}
+
+
+    <div class="mx-4 border border-1 rounded-1">
+
+        <div class="d-flex justify-content-center align-items-center p-2 border-bottom border-3">
+            <p class="h4">Arizam</p>
+        </div>
+
+        <div class="row row-cols-2 px-3">
+            {% for a in ariza_data %}
+
+            <div class="col py-2">
+                <strong>Familya: </strong>
+                {{a.user.last_name}}
+            </div>
+            <div class="col py-2">
+                <strong>Ism: </strong>
+                {{a.user.first_name}}
+            </div>
+
+            <div class="col py-2">
+                <strong>Sharif: </strong>
+                {{a.user.sharif}}
+            </div>
+            <div class="col py-2">
+                    <strong>Fakultet: </strong>
+                {{a.user.fakultet}}
+            </div>
+
+            <div class="col py-2">
+                <strong>Yonalish: </strong>
+                {{a.user.yonalish}}
+            </div>
+            <div class="col py-2">
+                    <strong>Kurs: </strong>
+                {{a.user.kurs}}
+            </div>
+
+            <div class="col py-2">
+                <strong>Guruh: </strong>
+                {{a.user.guruh}}
+            </div>
+            <div class="col py-2">
+                    <strong>GPA: </strong>
+                {{a.user.gpa}}
+            </div>
+
+            <div class="col-12 py-2">
+                    <p class="h3 text-center text-danger">Ariza korib chiqlmoqda !!! </p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+
+
+
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
