@@ -1,0 +1,35 @@
+{% extends "asosiy/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-5 d-flex justify-content-center align-items-center">
+
+
+    {% if user.role == 'superadmin' %}
+
+
+        <div class="w-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded p-4" style="max-width: 600px;">
+            <p class="h1 py-4 text-center">Admin qo`shish</p>
+
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+
+                <div class="d-flex justify-content-center py-2">
+                    <button class="btn btn-outline-success" type="submit">Saqlash</button>
+                </div>
+                
+            </form>
+        </div>
+
+        {% endif %}
+
+
+</div>
+
+{% endblock %}

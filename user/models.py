@@ -8,7 +8,7 @@ from user.choices import UserRoleChoice, BolimChoice
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     role = models.CharField(max_length=30, choices=UserRoleChoice.choices, default=UserRoleChoice.TALABA)
-    bolim = models.CharField(max_length=30, choices=BolimChoice.choices, default=BolimChoice.TALABA)
+    bolim = models.CharField(max_length=30, choices=BolimChoice.choices, default=BolimChoice.OQUV, blank=True)
     fakultet = models.CharField(max_length=255, blank=True)
     yonalish = models.CharField(max_length=255, blank=True)
     kurs  = models.CharField(max_length=255, blank=True)

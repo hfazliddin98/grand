@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 from user.models import User
 from user.choices import UserRoleChoice
-from user.forms import KirishForm, RoyhatForm
+from user.forms import KirishForm, AdminQoshishForm
 from user.serializers import UserGetSerializer, UserPostSerializer
 
 @csrf_exempt
@@ -43,15 +43,16 @@ def kirish(request):
     return render(request, 'asosiy/kirish.html', contex)
 
 @csrf_exempt
-def royhat(request):
+def admin_qoshish(request):
     if request.method == 'POST':
-        form = RoyhatForm(request.POST)
+        form = AdminQoshishForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             role = form.cleaned_data['role']
+            bolim = form.cleaned_data['bolim']
 
             user = User.objects.create_user(
                 username=username,
@@ -61,17 +62,18 @@ def royhat(request):
                 parol=password
             )
             user.role = role  # Agar custom user modelda 'role' bo‘lsa
+            user.bolim = bolim  # Agar custom user modelda 'bolim' bo‘lsa
             user.save()
 
             return redirect('kirish')
     else:
-        form = RoyhatForm()
+        form = AdminQoshishForm()
 
     contex = {
         'form':form
     }
 
-    return render(request, 'asosiy/royhat.html', contex)
+    return render(request, 'superadmin/admin_qoshish.html', contex)
 
 
 @csrf_exempt
@@ -88,7 +90,7 @@ def adminlar(request):
     contex = {
         'adminlar':adminlar,
     }
-    return render(request, 'admin/adminlar.html', contex)
+    return render(request, 'superadmin/adminlar.html', contex)
 
 
 class UserViewSet(ModelViewSet):

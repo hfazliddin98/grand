@@ -37,22 +37,50 @@
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="bi bi-grid fa-3x"></i>
+                        <i class="bi bi-grid"></i>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                         <!-- UL o‘ng tomonda bo'lishi uchun "ms-auto" -->
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item pe-4">
-                                <a class="nav-link active" aria-current="page" href="#">Arizalarim</a>
-                            </li>
+
+                            {% if user.role == 'superadmin' %}
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'adminlar'%}">Adminlar</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Arizalar</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Natijalar</a>
+                                </li>
+
+                            {% elif user.role == 'admin' %}
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Arizalar</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Natijalar</a>
+                                </li>
+
+                            {% else %}
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Arizalarim</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" aria-current="page" href="#">Malumotlarim</a>
+                                </li>
+
+                            {% endif %}
+
 
 
                             <div class=" d-block d-md-none">
-                                <li class="nav-item">
-                                    <a href="{% url 'chiqish' %}" class="nav-link active">Malumotlarim</a>
-                                </li>
+
                                 <li class="nav-item d-flex justify-content-center">
                                     <a href="{% url 'chiqish' %}" class="btn btn-outline-danger">Chiqish</a>
                                 </li>
@@ -61,18 +89,13 @@
                             <div class="d-none d-md-block">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-person"></i>
+                                        <i class="bi bi-person fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end"> <!-- o‘ng tomondan tushadi -->
-                                        <li class="nav-item d-flex justify-content-center py-2">
-                                           <a href="{% url 'home' %}" class="text-success text-decoration-none">
-                                               <i class="bi bi-person-check"></i>
-                                                Malumotlarim
-                                            </a>
-                                        </li>
+
                                         <li class="nav-item d-flex justify-content-center">
                                             <a href="{% url 'chiqish' %}" class="text-danger text-decoration-none">
-                                               <i class="bi bi-box-arrow-left"></i>
+                                                <i class="bi bi-box-arrow-left"></i>
                                                 Chiqish
                                             </a>
                                         </li>
@@ -108,8 +131,7 @@
 
         <div class="row">
             <a href="{% url 'kirish' %}">kirish</a>
-            <br>
-            <a href="{% url 'royhat' %}">royhat</a>
+           
         </div>
         {% endif %}
 

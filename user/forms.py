@@ -1,16 +1,19 @@
 from django import forms
-from user.choices import UserRoleChoice
+from user.choices import UserRoleChoice, BolimChoice
 
 
 class KirishForm(forms.Form):
-    username = forms.CharField(max_length=20, label="Username")
+    username = forms.CharField(max_length=12, min_length=12, label="Hemis id")
     password = forms.CharField(widget=forms.PasswordInput(), label="Parol")
 
-class RoyhatForm(forms.Form):
-    username = forms.CharField(max_length=20, label="Username")
+
+
+class AdminQoshishForm(forms.Form):
+    username = forms.CharField(max_length=12, min_length=12, label="Admin id")
     last_name = forms.CharField(max_length=200, label="Familya")
     first_name = forms.CharField(max_length=200, label="Ism")
     role = forms.ChoiceField(choices=UserRoleChoice.choices)
+    bolim = forms.ChoiceField(choices=BolimChoice.choices)
     password = forms.CharField(widget=forms.PasswordInput(), label="Parolni kiriting")
     password2 = forms.CharField(widget=forms.PasswordInput(), label="Parolni tasdiqlang")
 
