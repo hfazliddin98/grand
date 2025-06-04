@@ -9,7 +9,7 @@ class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     sharif = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=30, choices=UserRoleChoice.choices, default=UserRoleChoice.TALABA)
-    bolim = models.CharField(max_length=30, choices=BolimChoice.choices, default=BolimChoice.OQUV, blank=True)
+    bolim = models.CharField(max_length=30, choices=BolimChoice.choices, blank=True)
     fakultet = models.CharField(max_length=255, blank=True)
     yonalish = models.CharField(max_length=255, blank=True)
     kurs  = models.CharField(max_length=255, blank=True)

@@ -20,4 +20,5 @@ fontawesomefree
 
 
 gunicorn 
+pandas
 psycopg2-binary

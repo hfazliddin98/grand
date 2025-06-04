@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from user.choices import UserRoleChoice
+from user.models import User
 from grand_ariza.models import Ariza, Natija
 
 
@@ -31,10 +32,12 @@ def arizalar(request):
             }
             return render(request, 'admin/arizalar.html', contex)
         elif request.user.role == UserRoleChoice.TALABA:
+            user_data = User.objects.filter(id=request.user.id)
             ariza_data = Ariza.objects.filter(user=request.user.id)
 
             contex = {
                 'ariza_data':ariza_data,
+                'user_data':user_data,
             }
             return render(request, 'talaba/arizalar.html', contex)
     else:
