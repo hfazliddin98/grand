@@ -57,9 +57,21 @@
                 {{u.gpa}}
             </div> 
 
-            <div class="col-12 py-2">
-                    <p class="h3 text-center text-danger">Ariza korib chiqlmoqda !!! </p>
-            </div>
+            {% if u.gpa >= '3.5' %}
+            
+                <div class="col-12 d-flex justify-content-between py-2">
+                        <p class="h3 text-center text-danger">Tanlovda ishtirok etish uchun ariza yuborish !!! </p>
+                        <a class="btn btn-outline-success" href="{% url 'talaba_ariza_create' %}">Ariza yuborish</a>
+                </div>
+
+            {% else %}
+
+
+                <div class="col-12 py-2">
+                        <p class="h3 text-center text-danger">Ariza yuborib bolmaydi !!! </p>
+                </div>
+            {% endif %}
+
 
             {% endfor %}
 

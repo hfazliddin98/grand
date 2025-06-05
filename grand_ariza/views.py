@@ -5,13 +5,24 @@ from user.models import User
 from grand_ariza.models import Ariza, Natija
 
 
-# def arizalar(request):
-#     ariza_data = Ariza.objects.all()
+def talaba_ariza_create(request):
 
-#     contex = {
-#         'ariza_data':ariza_data,
-#     }
-#     return render(request, 'ariza/arizalar.html', contex)
+    if not Ariza.objects.filter(user=request.user.id):
+        print('Ariza mavjud')
+        Ariza.objects.create(
+            user=request.user.id,
+        )
+    else:
+        print('Ariza nomalum')
+
+        ariza_data = Ariza.objects.create(
+            user=request.user.id,
+        )
+
+        contex = {
+            'ariza_data':ariza_data,
+        }
+        return render(request, 'ariza/arizalar.html', contex)
 
 
 @csrf_exempt
