@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from user.choices import UserRoleChoice
+from grand_ariza.choices import ArizaRoleChoice
 from user.models import User
 from grand_ariza.models import Ariza, Natija
 
@@ -8,21 +10,16 @@ from grand_ariza.models import Ariza, Natija
 def talaba_ariza_create(request):
 
     if not Ariza.objects.filter(user=request.user.id):
-        print('Ariza mavjud')
+        print('Ariza yangi yaratish')
         Ariza.objects.create(
             user=request.user.id,
+            ariza_role=ArizaRoleChoice.OQUV
         )
+        return HttpResponse('Ariza yaratildi !!!')
     else:
         print('Ariza nomalum')
 
-        ariza_data = Ariza.objects.create(
-            user=request.user.id,
-        )
-
-        contex = {
-            'ariza_data':ariza_data,
-        }
-        return render(request, 'ariza/arizalar.html', contex)
+        return HttpResponse("Sizning arizangiz mavjud")
 
 
 @csrf_exempt

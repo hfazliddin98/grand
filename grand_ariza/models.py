@@ -7,9 +7,9 @@ from user.choices import BolimChoice
 
 class Ariza(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    oquv = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], default=0)
-    manaviyat = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], default=0)
-    ilmiy = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], default=0)
+    oquv = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], blank=True, default=0)
+    manaviyat = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], blank=True, default=0)
+    ilmiy = models.IntegerField(validators=[MinValueValidator(0, MaxValueValidator(100))], blank=True, default=0)
     ariza_role = models.CharField(max_length=30, choices=BolimChoice.choices, default=BolimChoice.OQUV)
     tasdiqlash = models.BooleanField(default=False)
     rad_etish = models.BooleanField(default=False)
