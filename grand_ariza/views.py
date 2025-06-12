@@ -1,26 +1,26 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from user.choices import UserRoleChoice
 from grand_ariza.choices import ArizaRoleChoice
 from user.models import User
 from grand_ariza.models import Ariza, Natija
 
 
-def talaba_ariza_create(request):
 
-    if not Ariza.objects.filter(user=request.user.id):
+@login_required
+def talaba_ariza_create(request):
+    try:
+        ariza = Ariza.objects.get(user=request.user)
+        return HttpResponse("Sizning arizangiz allaqachon mavjud")
+    except Ariza.DoesNotExist:
         print('Ariza yangi yaratish')
         Ariza.objects.create(
-            user=request.user.id,
+            user=request.user,  # Faqat .id emas, butun obyekt
             ariza_role=ArizaRoleChoice.OQUV
         )
         return HttpResponse('Ariza yaratildi !!!')
-    else:
-        print('Ariza nomalum')
-
-        return HttpResponse("Sizning arizangiz mavjud")
-
 
 @csrf_exempt
 def arizalar(request):
