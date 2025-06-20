@@ -9,6 +9,9 @@ from user.choices import UserRoleChoice
 from user.forms import KirishForm, AdminQoshishForm
 from user.serializers import UserGetSerializer, UserPostSerializer
 
+
+
+
 @csrf_exempt
 def home(request):
     if request.user.is_authenticated:
